@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model ICollection<BookStoreFront.Models.Responses.Book.BookDTO>;
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @foreach (var item in Model)
+        {
+            
+            <div class="card">
+            
+                <div class="card-body">
+                    <h2 class="card-title">
+                        @item.Title
+
+                    </h2>
+                </div>
+            </div>
+           
+                    
+
+       
+        }
+</div>
