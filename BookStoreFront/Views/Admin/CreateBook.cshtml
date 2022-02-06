@@ -1,0 +1,25 @@
+﻿@model BookStoreFront.Models.ViewModels.CreateBookViewModel
+<form method="post">
+    <div>
+        <label class="form-label">Title</label>
+        <input class="form-control" asp-for=Title />        
+    </div>
+    <div>
+        <label class="form-label">Price</label>
+        <input class="form-control" asp-for=Price />
+    </div>
+    <div>
+        <lable class="form-label">Autor</lable>
+        <select class="form-control" asp-for=Autor asp-items=@Model.Autors>
+            <option disabled selected>Select Autor</option>
+        </select>
+    </div>
+    <div>
+        <lable class="form-label">Genre</lable>
+        <select class="form-control" asp-for=Genre asp-items=@Model.Genres>
+            <option disabled selected>Select Genre</option>
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    
+</form>

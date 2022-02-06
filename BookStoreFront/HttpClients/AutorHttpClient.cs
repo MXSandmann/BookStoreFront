@@ -11,7 +11,7 @@ namespace BookStoreFront.HttpClients
         {
 
         }
-        public async Task<APIResponse<ICollection<AutorDTO>>> GetAllBooks()
+        public async Task<APIResponse<ICollection<AutorDTO>>> GetAllAutors()
         {
             return await GetAsync<ICollection<AutorDTO>>("api/autor/get");
         }

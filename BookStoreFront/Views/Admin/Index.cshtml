@@ -1,0 +1,42 @@
+﻿@model ICollection<BookStoreFront.Models.Responses.Book.BookDTO>;
+<a class="btn btn-success" asp-action="CreateBook"> Create</a>
+<table class="table">
+    <tr>
+        <th>
+            Title            
+        </th>
+        <th>
+            Autor
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Actions
+        </th>        
+    </tr>  
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Title
+            </td>
+            <td>               
+                @String.Join(';', item.Autors.Select(el => el.Name + " " + el.Surname))
+            </td>
+            <td>               
+                @String.Join(';', item.Genres)
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    }
+</table>

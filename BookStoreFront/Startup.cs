@@ -1,3 +1,4 @@
+using BookStoreFront.Common;
 using BookStoreFront.HttpClients;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,18 +26,7 @@ namespace BookStoreFront
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton<BookHttpClient>(s => 
-            {
-                return new BookHttpClient("https://localhost:5001/");
-            });
-            services.AddSingleton<GenreHttpClient>(s => 
-            { 
-                return new GenreHttpClient("https://localhost:5001/"); 
-            });
-            services.AddSingleton<AutorHttpClient>(s =>
-            {
-                return new AutorHttpClient("https://localhost:5001/");
-            });
+            services.RegisterHttpClients();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
