@@ -2,6 +2,7 @@
 using BookStoreFront.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -122,7 +123,7 @@ namespace BookStoreFront.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteBook()
         {
-            return RedirectToAction("Error");
+            throw new NotImplementedException();
         }
 
     }
