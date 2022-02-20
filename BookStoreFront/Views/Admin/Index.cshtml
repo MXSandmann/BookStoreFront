@@ -1,5 +1,11 @@
 ﻿@model ICollection<BookStoreFront.Models.Responses.Book.BookDTO>;
-<a class="btn btn-success" asp-action="CreateBook"> Create</a>
+ <a class="btn btn-success" asp-action="CreateBook">Create new book</a>
+ <a class="btn btn-success" asp-action="CreateAutor">Create new autor</a>
+ <a class="btn btn-info" asp-action="GetAllAutors">Show all autors</a>
+ <a class="btn btn-success" asp-action="CreateGenre">Create new genre</a>
+ <a class="btn btn-info" asp-action="GetAllGenres">Show all genres</a>
+
+
 <table class="table">
     <tr>
         <th>
@@ -35,7 +41,8 @@
             </td>
             <td>
                 <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-danger">Delete</button>
+                @*<button class="btn btn-danger">Delete </button>*@
+                <a class="btn btn-danger" asp-action="DeleteBook">Delete</a>
             </td>
         </tr>
     }

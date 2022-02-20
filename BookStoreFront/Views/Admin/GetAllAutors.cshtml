@@ -1,0 +1,29 @@
+﻿@model ICollection<BookStoreFront.Models.Responses.Autor.AutorDTO>;
+<table class="table">
+    <tr>
+        <th>
+            First name
+        </th>
+        <th>
+            Last name
+        </th>
+    </tr>
+    @foreach (var item in Model)
+   {
+       <tr>
+           <td>
+               @item.ID
+           </td>
+           <td>
+               @item.Name
+           </td>
+           <td>
+               @item.Surname
+           </td>
+           <td>
+               <a class="btn btn-danger" asp-action="DeleteAutor" f>Delete</a>
+               
+           </td>
+       </tr>
+   }
+</table>

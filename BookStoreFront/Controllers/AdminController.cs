@@ -29,18 +29,8 @@ namespace BookStoreFront.Controllers
                 return RedirectToAction("Error");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateBook(CreateBookViewModel model)
-        {
-            var result = await _bookHttpClient.CreateBook(model.Title, model.Autor, model.Genre, double.Parse(model.Price, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture));
-            if (result.Success)
-                return RedirectToAction("Index", "Admin");
-            else
-                return RedirectToAction("Error", "Home");
-        }
-
         public async Task<IActionResult> CreateBook()
-        {   
+        {
             var autors = await _autorHttpClient.GetAllAutors();
             var genres = await _genreHttpClient.GetAllGenres();
 
@@ -55,5 +45,85 @@ namespace BookStoreFront.Controllers
             };
             return View(createBookViewModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBook(CreateBookViewModel model)
+        {
+            var result = await _bookHttpClient.CreateBook(model.Title, model.Autor, model.Genre, double.Parse(model.Price, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture));
+            if (result.Success)
+                return RedirectToAction("Index", "Admin");
+            else
+                return RedirectToAction("Error", "Home");
+        }
+
+        public ViewResult CreateAutor()
+        {
+            return View(new CreateAutorViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAutor(CreateAutorViewModel model)
+        {
+            var result = await _autorHttpClient.CreateAutor(model.Name, model.Surname);
+            if (result.Success)
+                return RedirectToAction("Index", "Admin");
+            else
+                return RedirectToAction("Error", "Home");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllAutors()
+        {
+            var result = await _autorHttpClient.GetAllAutors();
+            if (result.Success)
+                return View(result.Data);
+            else
+                return RedirectToAction("Error");
+        }
+
+        public ViewResult CreateGenre()
+        {
+            return View(new CreateGenreViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateGenre(CreateGenreViewModel model)
+        {
+            var result = await _genreHttpClient.CreateGenre(model.Name);
+            if (result.Success)
+                return RedirectToAction("Index", "Admin");
+            else
+                return RedirectToAction("Error", "Home");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllGenres()
+        {
+            var result = await _genreHttpClient.GetAllGenres();
+            if (result.Success)
+                return View(result.Data);
+            else
+                return RedirectToAction("Error");
+        }
+
+        
+        //[HttpDelete]
+        public async Task<IActionResult> DeleteAutor(int id)
+        {
+            var deletedAutorId = await _autorHttpClient.DeleteAutor(id);
+            
+            if (deletedAutorId.Success)
+                return RedirectToAction("Index", "Admin");
+            else
+                return RedirectToAction("Error");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBook()
+        {
+            return RedirectToAction("Error");
+        }
+
     }
 }

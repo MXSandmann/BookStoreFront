@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace BookStoreFront.Common
 {
-    public static  class IServiceCollectionExtension
+    public static class IServiceCollectionExtension
     {
        
         public static void RegisterHttpClients(this IServiceCollection services)

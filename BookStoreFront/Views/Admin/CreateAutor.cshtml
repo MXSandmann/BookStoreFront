@@ -1,0 +1,12 @@
+﻿@model BookStoreFront.Models.ViewModels.CreateAutorViewModel
+<form method="post">
+    <div>
+        <label class="form-label">First name</label>
+        <input class="form-control" asp-for=Name />
+    </div>
+    <div>
+        <label class="form-label">Last name</label>
+        <input class="form-control" asp-for=Surname />
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>

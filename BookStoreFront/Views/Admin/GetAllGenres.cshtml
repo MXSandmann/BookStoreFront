@@ -1,0 +1,16 @@
+﻿@model ICollection<BookStoreFront.Models.Responses.Genre.GenreDTO>;
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>        
+    </tr>
+    @foreach (var item in Model)
+   {
+       <tr>
+           <td>
+               @item.Name
+           </td>
+       </tr>
+   }
+</table>
