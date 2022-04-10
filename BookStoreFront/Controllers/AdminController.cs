@@ -104,6 +104,7 @@ namespace BookStoreFront.Controllers
             var result = await _genreHttpClient.GetAllGenres();
             if (result.Success)
                 return View(result.Data);
+                
             else
                 return RedirectToAction("Error");
         }
@@ -120,11 +121,28 @@ namespace BookStoreFront.Controllers
                 return RedirectToAction("Error");
         }
 
-        [HttpDelete]
+        //[HttpDelete]
         public async Task<IActionResult> DeleteBook()
         {
             throw new NotImplementedException();
         }
 
+        [HttpGet("get/{id}")]
+        public async Task<IActionResult> UpdateBook(int id)
+        {
+
+            var result = await _bookHttpClient.GetBookById(id);
+            if (result.Success)
+                return View(new CreateBookViewModel()
+                {
+                    Title = "Bla",
+                    Price = result.Data.Price.ToString(),
+
+                });
+            else
+                return RedirectToAction("Error");
+            //return view;
+            throw new NotImplementedException();
+        }
     }
 }

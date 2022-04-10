@@ -5,6 +5,7 @@ namespace BookStoreFront.Models.Responses.Book
 {
     public class BookDTO
     {
+        public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int PagesCount { get; set; }

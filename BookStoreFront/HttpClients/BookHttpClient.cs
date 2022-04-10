@@ -32,5 +32,10 @@ namespace BookStoreFront.HttpClients
 
         }
 
+        public async Task<APIResponse<BookDTO>> GetBookById(int id)
+        {
+            return await GetAsync<BookDTO>($"api/book/get/{id}");
+        }
+
     }
 }
