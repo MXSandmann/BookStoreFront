@@ -9,6 +9,8 @@ namespace BookStoreFront.Models.ViewModels
         public int Autor { get; set; }
         public int Genre { get; set; }
         public string Price { get; set; }
+        public int PagesCount { get; set; }
+        public int Year { get; set; }       
 
         public IEnumerable<SelectListItem> Autors { get; set; }
         public IEnumerable<SelectListItem> Genres { get; set; } 

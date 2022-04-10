@@ -50,7 +50,12 @@ namespace BookStoreFront.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBook(CreateBookViewModel model)
         {
-            var result = await _bookHttpClient.CreateBook(model.Title, model.Autor, model.Genre, double.Parse(model.Price, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture));
+            var result = await _bookHttpClient.CreateBook(model.Title, 
+                model.Autor,
+                model.Genre,
+                double.Parse(model.Price, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture),
+                model.PagesCount,
+                model.Year);
             if (result.Success)
                 return RedirectToAction("Index", "Admin");
             else
@@ -127,22 +132,44 @@ namespace BookStoreFront.Controllers
             throw new NotImplementedException();
         }
 
+        // Update get
         [HttpGet("get/{id}")]
         public async Task<IActionResult> UpdateBook(int id)
         {
 
             var result = await _bookHttpClient.GetBookById(id);
             if (result.Success)
-                return View(new CreateBookViewModel()
+                return View("CreateBook", new CreateBookViewModel()
                 {
-                    Title = "Bla",
+                    Title = result.Data.Title,
                     Price = result.Data.Price.ToString(),
+                    PagesCount = result.Data.PagesCount,
+                    Year = result.Data.Year,
+
+                    
+
 
                 });
             else
                 return RedirectToAction("Error");
             //return view;
             throw new NotImplementedException();
+        }
+
+        // Update post
+        [HttpPost("get/{id}")]
+        public async Task<IActionResult> UpdateBook(CreateBookViewModel model)
+        {
+            var result = await _bookHttpClient.CreateBook(model.Title, 
+                model.Autor,
+                model.Genre, 
+                double.Parse(model.Price, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture),
+                model.PagesCount,
+                model.Year);
+            if (result.Success)
+                return RedirectToAction("Index", "Admin");
+            else
+                return RedirectToAction("Error", "Home");
         }
     }
 }

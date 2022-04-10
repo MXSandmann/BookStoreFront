@@ -9,6 +9,14 @@
         <input class="form-control" asp-for=Price />
     </div>
     <div>
+        <label class="form-label">Pages</label>
+        <input class="form-control" asp-for=PagesCount />
+    </div>
+    <div>
+        <label class="form-label">Year</label>
+        <input class="form-control" asp-for=Year />
+    </div>
+    <div>
         <lable class="form-label">Autor</lable>
         <select class="form-control" asp-for=Autor asp-items=@Model.Autors>
             <option disabled selected>Select Autor</option>
