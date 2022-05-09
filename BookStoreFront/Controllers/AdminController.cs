@@ -153,10 +153,12 @@ namespace BookStoreFront.Controllers
 
         // Update post
         [HttpPost("get/{id}")]
-        public async Task<IActionResult> UpdateBook(UpdateBookViewModel model)
+
+        
+        public async Task<IActionResult> UpdateBook(UpdateBookViewModel model, int id)
         {
             var result = await _bookHttpClient
-                .UpdateBook(model.Title, double.Parse(model.Price, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture), model.PagesCount, model.Year);
+                .UpdateBook(id, model.Title, double.Parse(model.Price, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture), model.PagesCount, model.Year);
             if (result.Success)
                 return RedirectToAction("Index", "Admin");
             else

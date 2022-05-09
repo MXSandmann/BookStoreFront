@@ -1,18 +1,22 @@
 ﻿@model ICollection<BookStoreFront.Models.Responses.Book.BookDTO>;
- <a class="btn btn-success" asp-action="CreateBook">Create new book</a>
- <a class="btn btn-success" asp-action="CreateAutor">Create new autor</a>
- <a class="btn btn-info" asp-action="GetAllAutors">Show all autors</a>
- <a class="btn btn-success" asp-action="CreateGenre">Create new genre</a>
- <a class="btn btn-info" asp-action="GetAllGenres">Show all genres</a>
 
+<div class="d-flex flex-row">
+    <a class="btn btn-success" asp-action="CreateBook">Create new book</a>
+    <a class="btn btn-success" asp-action="CreateAutor">Create new autor</a>
+    <a class="btn btn-success" asp-action="CreateGenre">Create new genre</a>
+</div>
+<div class="d-flex flex-row-reverse">
+    <a class="btn btn-info" asp-action="GetAllAutors">Show all autors</a>
+    <a class="btn btn-info" asp-action="GetAllGenres">Show all genres</a>
+</div>
 
 <table class="table">
     <tr>
         <th>
-            ID            
+            ID
         </th>
         <th>
-            Title            
+            Title
         </th>
         <th>
             Autor
@@ -31,21 +35,21 @@
         </th>
         <th>
             Actions
-        </th>        
-    </tr>  
+        </th>
+    </tr>
     @foreach (var item in Model)
     {
         <tr>
-             <td>
+            <td>
                 @item.ID
             </td>
             <td>
                 @item.Title
             </td>
-            <td>               
+            <td>
                 @String.Join(';', item.Autors.Select(el => el.Name + " " + el.Surname))
             </td>
-            <td>               
+            <td>
                 @String.Join(';', item.Genres)
             </td>
             <td>
@@ -61,11 +65,11 @@
                 @*<button class="btn btn-primary">Edit</button>*@
                 @*<button class="btn btn-danger">Delete </button>*@
                 <div>
-                    <a class="btn btn-primary" asp-action="UpdateBook" asp-route-id="@item.ID">Edit</a>
-                   
+                    <a class="btn btn-primary" asp-action="UpdateBook" asp-route-id="@item.ID">Edit </a>
+
                 </div>
                 <div>
-                     <a class="btn btn-danger" asp-action="DeleteBook">Delete</a>
+                    <a class="btn btn-danger" asp-action="DeleteBook">Delete</a>
                 </div>
             </td>
         </tr>

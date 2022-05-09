@@ -44,13 +44,15 @@ namespace BookStoreFront.HttpClients
             return await GetAsync<BookDTO>($"api/book/get/{id}");
         }
 
-        public async Task<APIResponse<int>> UpdateBook(string title,           
+        public async Task<APIResponse<int>> UpdateBook(int id,
+            string title,           
             double price,
             int pagesCount,
             int year)
         {
             var request = new UpdateBookRequest()
             {
+                Id = id,
                 Title = title,                
                 Price = price,
                 Year = year,
