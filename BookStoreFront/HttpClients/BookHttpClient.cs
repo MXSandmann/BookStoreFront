@@ -49,7 +49,7 @@ namespace BookStoreFront.HttpClients
             int pagesCount,
             int year)
         {
-            var request = new CreateBookRequest()
+            var request = new UpdateBookRequest()
             {
                 Title = title,                
                 Price = price,
@@ -57,7 +57,7 @@ namespace BookStoreFront.HttpClients
                 PagesCount = pagesCount
             };
 
-            return await PostAsync<int>("api/book/update", request);
+            return await PutAsync<int>("api/book/update", request);
 
         }
 

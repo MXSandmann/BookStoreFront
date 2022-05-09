@@ -1,0 +1,22 @@
+﻿@model BookStoreFront.Models.ViewModels.UpdateBookViewModel
+<form method="post">
+    <div>
+        <label class="form-label">Title</label>
+        <input class="form-control" asp-for=Title />        
+    </div>
+    <div>
+        <label class="form-label">Price</label>
+        <input class="form-control" asp-for=Price />
+    </div>
+    <div>
+        <label class="form-label">Pages</label>
+        <input class="form-control" asp-for=PagesCount />
+    </div>
+    <div>
+        <label class="form-label">Year</label>
+        <input class="form-control" asp-for=Year />
+    </div>
+   
+    <button class="btn btn-primary" type="submit">Submit</button>
+    
+</form>

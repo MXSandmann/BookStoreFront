@@ -35,5 +35,12 @@ namespace BookStoreFront.HttpClients
             return JsonConvert.DeserializeObject<ApiResponse>(await response.Content.ReadAsStringAsync());
         }
 
+        protected virtual async Task<APIResponse<T>> PutAsync<T>(string url, object body)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            var response = await client.PutAsync(url, content);
+            return JsonConvert.DeserializeObject<APIResponse<T>>(await response.Content.ReadAsStringAsync());
+        }
+
     }
 }
