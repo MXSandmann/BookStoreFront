@@ -52,6 +52,11 @@ namespace BookStoreFront
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "update",
+                    //pattern: "Admin/update/{id?}");
+                    pattern: "update/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

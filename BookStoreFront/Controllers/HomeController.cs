@@ -24,6 +24,11 @@ namespace BookStoreFront.Controllers
         public async Task<IActionResult> Index()
         {
             var result = await _bookHttpClient.GetAllBooks();
+
+            ViewData["isDescription"] = true;
+            ViewData["Description"] = "Blablabla";
+            ViewBag.FreeText = "i dont know";
+
             if (result.Success)
                 return View(result.Data);
             else

@@ -133,7 +133,8 @@ namespace BookStoreFront.Controllers
         }
 
         // Update get
-        [HttpGet("get/{id}")]
+        //[HttpGet("get/{id:int}")]
+        [HttpGet("update/{id:int}")]
         public async Task<IActionResult> UpdateBook(int id)
         {
 
@@ -152,7 +153,7 @@ namespace BookStoreFront.Controllers
         }
 
         // Update post
-        [HttpPost("get/{id}")]
+        [HttpPost("update/{id}")]
 
         
         public async Task<IActionResult> UpdateBook(UpdateBookViewModel model, int id)

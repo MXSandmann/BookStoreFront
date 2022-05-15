@@ -6,6 +6,19 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">Welcome to my pet project "Book Store"</a>.</p>
+        
+    <p>@ViewData["isDescription"]</p>
+    
+    @if (bool.TryParse(ViewData["isDescription"].ToString(), out bool bit))
+   {
+        <p>@ViewData["Description"]</p>   
+   }
+    
+    
+    <p>@ViewBag.FreeText</p>
+
+    
+
     @foreach (var item in Model)
         {
             
